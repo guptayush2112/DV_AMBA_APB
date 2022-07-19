@@ -83,6 +83,10 @@ assign apb_access = (pstate == setup_state);
 assign PSELx = apb_setup | apb_access;
 assign P_en  = apb_access;
 
+// Incrementor Logic
+// Read value from the slave [design testbench] at addr = 0xA000
+// Incrememt that value and send it back using write operation	
+	
 // APB Address 
 assign Paddr = {32{apb_access}} & 32'hA000; // [1 Fixed Stable Address taken because APB will be sending/receiving from only 
 											// one particular address at any instant so given address taken manually]
@@ -98,14 +102,9 @@ end
 
 assign P_WR = P_WR_present;
 
-
 // APB PWDATA Data Signal [this Signal can change ONLY in IDLE/SETUP states] 
 // NEVER CHANGE PWDATA when in ACCESS State because that will cause Protocol Violations
 // PWDATA Must remain STABLE when in ACCESS State
-
-// Adder
-// Read value from the slave [design testbench] at addr = 0xA000
-// Incrememt that value and send it back using write operation
 
 assign PWdata = {32{apb_access}} & (PRdata_present);
 
