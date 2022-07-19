@@ -49,7 +49,7 @@ begin
 			if (add_i[0])
 			begin
 				nstate = setup_state;
-				P_WR_next = add_i[0];
+				P_WR_next = add_i[1];
 			end
 			else
 				nstate = idle_state;
@@ -100,7 +100,7 @@ begin
 		P_WR_present <= P_WR_next;
 end
 
-assign apb_P_WR = P_WR_present;
+assign P_WR = P_WR_present;
 
 // APB PWDATA Data Signal [this Signal can change ONLY in IDLE/SETUP states] 
 // NEVER CHANGE PWDATA when in ACCESS State because that will cause Protocol Violations
