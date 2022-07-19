@@ -1,19 +1,19 @@
 module AMBA_APB_mas(
-	input 				Pclk,
-	input 				Prst, 	// active-low reset
+	input 			Pclk,
+	input 			Prst, 	// active-low reset
 	input  		[1:0]	add_i, 	// 00 - No Operation
-								// 01 - Read Operation
-								// 10 - No Operation
-								// 11 - Write Operation
+					// 01 - Read Operation
+					// 10 - No Operation
+					// 11 - Write Operation
 							
 	output 		[31:0]	Paddr,
-	output 				PSELx,
-	output 				P_en,
-	output 				P_WR,
+	output 			PSELx,
+	output 			P_en,
+	output 			P_WR,
 	output     	[31:0]	PWdata,
 	output reg  		P_slverr,
-    input  reg 	[31:0]	PRdata,
-	input 				P_ready
+    	input  reg 	[31:0]	PRdata,
+	input 			P_ready
 );
 
 //State declaration communication
